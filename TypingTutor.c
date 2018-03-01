@@ -1,8 +1,19 @@
 #include<stdio.h>
-#include<conio.h>
+//#include<conio.h>
+#include <curses.h>
+#include <ncurses.h>
 #include<string.h>
 #include<time.h>
 #include<stdlib.h>
+
+
+
+//declaring gotoxy() function
+
+void gotoxy(int x,int y)
+{
+printf("%c[%d;%df",0x1B,y,x);
+}
 
 int main()
 {
@@ -25,11 +36,11 @@ int main()
      }
      fclose(file);
 
-     clrscr();
+     system("clear");
      i=0;
      while(i<len)
      {
-	       clrscr();
+	       system("clear");
 	       gotoxy(27,4);
 	       printf("WELCOME TO TYPING TUTOR!");
 	       printf("\n\n\nText: ");
@@ -44,7 +55,7 @@ int main()
      }
      end=clock();
      score=(long double)len/((long double)(end-start)/(long double)CLOCKS_PER_SEC);
-     clrscr();
+     system("clear");
      file=fopen("score.txt","r");
 
      fscanf(file,"%Lf",&high);
